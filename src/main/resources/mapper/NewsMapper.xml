@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ylye.mapper.NewsMapper">
+
+    <select id="selectByPage" resultType="com.example.ylye.entity.News" >
+        select * from news limit ${current*pagesize},#{pagesize};
+    </select>
+
+    <select id="getHot" resultType="com.example.ylye.entity.News">
+        select * from news order by ctime desc  limit 5;
+    </select>
+
+    <select id="getYl" resultType="com.example.ylye.entity.News">
+        select * from news where ntype = 2  order by ctime desc limit 5;
+    </select>
+
+    <select id="getNew" resultType="com.example.ylye.entity.News">
+        select * from news where ntype = 1  order by ctime desc limit 5;
+    </select>
+
+    <select id="getNewsByPage" resultType="com.example.ylye.entity.News">
+        select * from news where ntype = #{type}  order by ctime desc limit ${(page-1) * 10},10;
+    </select>
+
+    <delete id="removeById" >
+        delete from news where nid = #{nid}
+    </delete>
+</mapper>

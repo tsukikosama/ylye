@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ylye.mapper.ShopMapper">
+
+    <select id="selectFood" resultType="com.example.ylye.entity.Shop">
+        select * from shop
+        where stype = '美食' and state = '营业';
+    </select>
+
+    <select id="selectHappy" resultType="com.example.ylye.entity.Shop">
+        select * from shop
+        where stype = '礼品' and state = '营业';
+    </select>
+
+</mapper>

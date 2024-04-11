@@ -1,0 +1,89 @@
+server:
+  port: 8088
+  application:
+    name: yly
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB # 设置单个文件最大大小为10MB
+      max-request-size: 100MB  	# 设置多个文件大小为100MB
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yly?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+  #??????
+  mail:
+    #??smtp??????
+    # qq???smtp.qq.com          ???465?587
+    # sina    smtp.sina.cn
+    # aliyun  smtp.aliyun.com
+    # 163     smtp.163.com       ???465?994
+    host: smtp.qq.com
+    #?????
+    username: 1083344129@qq.com
+    #????,?????????????????????
+    password: nacjsulkacfbgadh
+    #???465?587
+    port: 587
+    #????????UTF-8
+    default-encoding: UTF-8
+    #????
+    properties:
+      mail:
+        #??SSL ????
+        smtp:
+          ssl:
+            #????????ssl
+            enable: false
+            required: false
+          #??debug??????????????????????????????
+        debug: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#
+mybatis-plus:
+  type-aliases-package: com.yly.entity # ?????
+  ##??mybatisplus??sql??
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置mybatisp xml文件位置
+  mapper-locations:
+    - classpath:mapper/*.xml
+logging:
+  level:
+    com.yly: debug
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j官方文档
+    description: "`我是测试`,**你知道吗**
+    # aaa"
+    email: xiaoymin@foxmail.com
+    concat: miku
+    url: https://docs.xiaominfo.com
+    version: v4.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      test1:
+        group-name: 分组名称
+        api-rule: package
+        api-rule-resources:
+          - com.example.ylye.controller
+alipay:
+  appId: 9021000133606234
+    # 商户私钥，您的PKCS8格式RSA2私钥，通过开发助手生成的应用私钥
+  appPrivateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCc/6nAd90ExSGKvTovgVBP+bNpHv9uh5OkwkVT102Q6MSYcTfRBkKacw7JjYHcoOA0FiUQbkDPvaFLZPUVWCF9dBzhTrwxBueNWMqSA3/+ZVko9JNtCKirRSEVffj/O6I7g7f9901qkYIm4mv9b/kqsISg3Qg3slJLiEOzR9mF/0B5muZS48MSaBCf4uthYJZmf4jaw8hkwXc0C1oDTl91khUXpw5+gUjPgDkBdnbhlKyF0SomQ0aGvtwq55wts5/SoJFDc0qnfNwO5alGss5H3E/c/dRj8YJFGBapXlD1pgDpY2z45Bgdz6l8jhX4LMyqpv0IZDEmvNuFkNuz5zRdAgMBAAECggEASl5Axs8AfvXyQYoJOd+Db57UgYMRdAX8xhrQRDrEn1PjbGKVEgppGkhOROMnFJ+QFJw4ymOvh7hH4zLbdVTd6FNMKt3k/0RKAwaATlIiGxte9KuF+iwT2a1RUqDthdl1q8NlMIQow8ZRZKH0jYSw/qvG53xMHDX4DZdqmk36mCHl4TCSThu18doyMok6pnZZSxdl78qsrHUt9FQSJkyXGsDzIluvvXc451H3U5qBHdZ3WtR6ACEVhcJVCvMcXCrGBabN9fDX/qRFIfi/xeuXbGAUDUFzmN9odzH6vSWY+FmqCf8ILP3i+s6FM8ZYjwKKlZbJXqteen+QF+PKqvSngQKBgQDhrVkSPwnhkfbLeiW9b7rGl7pGUD09ulP920SzKpmH7xW456D9m9I+YDLMF7l8u/36d6PqwbHU1bVjH+BATzacx7i1ZcDHVLkdpvO7cAwNdBrzOocnArHxtgyX4DB/S4bBzkTe69bdLnlnkr6b/RycooO04algJGfWU7zwVS0p+QKBgQCyF/i0MQbOfT3g3ZrEEC8ZYucHTlJ0LUP9zcqn0Qf8ksn1k1pCrxpjilwdeJ2zdMpGYVWdbekbFNG0Tq485tc983quJFyrPWu9kBsUm3sRxhIKbIUeK8EN8qx7MpkBFN/LucU+0dvZ60Rx/Lb/oGTIObyS4mC5RvU+AAVPfb0WhQKBgQDCcOr3j5zh3zN2aY2uxF920C/MeUHqt2m6pXtxq1iRCGv83oWVPPZOi+/4bNCCKi9P6Fkw4SZpLKCWAVbj0dxKBMKeeEc690Jvy/LgIlAgH1NBEcJ02BudGK+NA7qFUvuObDxmnWiJNYugs4zLNa+7PUKhTHT0wyk8PvXhVGIPcQKBgFraQcTi0d8bIysIwgBNZUmlG8itWwDraqkah8zOpS1jUOYXss8b9vFazx01v/WhmeMHmp6CSI3JNCWwkdB9zsZK5IXcBO5SmhkNX9NGciUiD2gD7nDyzzynVPhQWp+jn3uVnJssgeSM0dD4o/6KO3+tfJbOJ5u9KDTl28+ujHzlAoGBAMCuAtvex6CdhvAcr4AKYSo6SdxyRphhdhGFtyGhbOl3P/NzCodXkJQN77gR6om8aHVLcGQjv2LfQ7zP40BwfYTaKQV6+lvBBLMfBIyvktxDIa6v8C4c8k3fojL98RGF8ABRyOeZaAsFQLPCS0xHc0KJyIZpw1Wa54xSqiP94EbG
+    # 支付宝公钥,在沙箱应用获取，通过应用公钥生成支付宝公钥
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAidoTNBVVyzJE5aNxacU3uHfoJa9PxwRunLwWxQQQOhHC9lMw/KAunDHP/dZvsHpgm6ws+HxrECkPj2NZoAWxiMbY6vtr89k8+m5dpMvt9ppAfyXiT5VARNoI78eYtZgaCzaoF7v4TIRztluD+FkS6L+1dylwT7cFhz41i7z69Wf1/eh6mMRZb4UlSccgwf/H05pFmt9qVeDYDTDaxC5aPLWq9ya/NmENtrpU0qFTOicLw9gkhR0VfinMUWG77/sNmSaGngNMWHu8cDcxZmpWlgsVoSbpmrNdF/cboLSey520uke+A3Af+18mYVvvdJvypbx0KGSYlw0tB96uiUW02QIDAQAB
+  notifyUrl:  http://xibeck.natappfree.cc/alipay/notify
+    #http://xmxbaz.natappfree.cc
+
+yly:
+  uploadurl: http://localhost:8085/img/
+  localurl: C:/Users/q/Desktop/1/nginx-1.25.3/nginx-1.25.3/html/img/

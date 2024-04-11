@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ylye.mapper.OrderMapper">
+    <insert id="createOrderByUid" keyColumn="oid" parameterType="com.example.ylye.entity.Orders">
+        insert into orders (oid,uid,pid,ctime,state)
+        value (,#{uid},)
+    </insert>
+    <select id="selectByOid" parameterType="string" resultType="com.example.ylye.entity.Orders" >
+        select * from orders where oid = #{oid}
+    </select>
+
+    <update id="updateState" keyColumn="oid" >
+        update orders set state = #{state} ,ptime = #{gmtPayment} , zfbid = #{alipayTradeNo} where oid = #{tradeNo}
+    </update>
+
+    <select id="findOrderByUid" parameterType="int" resultType="com.example.ylye.entity.Orders">
+        select * from orders where uid = #{uid}
+    </select>
+</mapper>
